@@ -38,3 +38,5 @@ gem 'jquery-rails'
 # gem 'debugger'
 
 gem 'rubycas-client'
+
+gem "activeresource", :require => 'active_resource'

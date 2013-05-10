@@ -1,10 +1,9 @@
-
 class FavoritesController < ApplicationController
   # GET /favorites
   # GET /favorites.json
   def index
     @favorites = Favorite.all
-
+	
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @favorites }
