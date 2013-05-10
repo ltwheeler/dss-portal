@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @app_bookmark.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @app_bookmark.description %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @app_bookmark.url %>
+</p>
+
+<p>
+  <b>Uid:</b>
+  <%= @app_bookmark.uid %>
+</p>
+
+
+<%= link_to 'Edit', edit_app_bookmark_path(@app_bookmark) %> |
+<%= link_to 'Back', app_bookmarks_path %>
