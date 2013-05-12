@@ -40,3 +40,5 @@ gem 'jquery-rails'
 gem 'rubycas-client'
 
 gem "activeresource", :require => 'active_resource'
+
+gem "paperclip", "~> 3.1"

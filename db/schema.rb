@@ -11,15 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130510061027) do
+ActiveRecord::Schema.define(:version => 20130512055310) do
 
   create_table "app_bookmarks", :force => true do |t|
     t.string   "name"
     t.string   "description"
     t.string   "url"
     t.integer  "uid"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "icon_file_name"
+    t.string   "icon_content_type"
+    t.integer  "icon_file_size"
+    t.datetime "icon_updated_at"
   end
 
   create_table "favorites", :force => true do |t|
