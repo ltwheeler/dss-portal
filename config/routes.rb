@@ -1,7 +1,10 @@
 DssPortal::Application.routes.draw do
   resources :app_bookmarks
   resources :favorites
-  # root :to => 'application#welcome'
+  resources :site
+  
+  root :to => 'application#welcome'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

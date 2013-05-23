@@ -3,7 +3,7 @@ class FavoritesController < ApplicationController
   # GET /favorites.json
   def index
     @favorites = Favorite.all
-	
+	@current_user = current_user
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @favorites }

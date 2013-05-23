@@ -1,0 +1,23 @@
+﻿<h1> messenger space</h1>
+
+<h1>Favorite Apps</h1>
+
+<h1>RM Apps</h1>
+<% @apps.each do |t| %>
+<%= t.id.to_s + " -- name:" + t.name + " -- description:" + t.description%> <br />
+<%  end %>
+
+<h1>Bookmarked Apps</h1>
+
+<h1>Test Scraps</h1>
+
+<%= session[:cas_user] %>
+<%= @current_user %>
+
+<% $a = Person.find("guilden") %>
+<%= $a.name %>
+<% $b = Application.find(1) %>
+<%= $b.name %>
+<%= @current_user %>
+<% $c = session[:cas_user] %>
+<%= $c %>
