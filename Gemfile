@@ -12,6 +12,7 @@ gem "activeresource", :require => 'active_resource'
 gem "paperclip", "~> 3.1"
 gem 'jquery-rails'
 gem "twitter-bootstrap-rails", "~> 2.2.6"
+gem 'jquery-ui-rails', '~> 4.0.3'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
