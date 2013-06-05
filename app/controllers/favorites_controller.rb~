@@ -81,7 +81,7 @@ class FavoritesController < ApplicationController
     end
   end
 
-  def reorder
+def reorder
     @favorite_ids = params[:favorites]
     n = 0
     ActiveRecord::Base.transaction do

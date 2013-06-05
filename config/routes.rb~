@@ -3,13 +3,6 @@ DssPortal::Application.routes.draw do
   resources :favorites
   resources :site
   
-resources :favorites do
-  collection do
-    post 'reorder'
-  end
-end
-
-
   root :to => 'application#welcome'
   
   # The priority is based upon order of creation:

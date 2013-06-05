@@ -1,6 +1,9 @@
 ﻿<h1> messenger space</h1>
 
+
 <h1>Favorite Apps</h1>
+
+
 
 <h1>RM Apps</h1>
 <% $p = Person.find(session[:cas_user]) %>
