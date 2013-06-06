@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :position %><br />
-    <%= f.number_field :position %>
+    <%= f.label :order %><br />
+    <%= f.number_field :order %>
   </div>
   <div class="field">
     <%= f.label :AppBookmark_id %><br />

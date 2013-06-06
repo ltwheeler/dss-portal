@@ -3,7 +3,7 @@ $(window).load(function() {
       update: function(event, ui){
         var itm_arr = $("#sortable").sortable('toArray');
         var pobj = {favorites: itm_arr};
-        $.post("#", pobj);
+        $.post("/favorites/reorder", pobj);
       }
     });
 });

@@ -2,7 +2,7 @@
 
 <table>
   <tr>
-    <th>Position</th>
+    <th>Order</th>
     <th>Appbookmark</th>
     <th></th>
     <th></th>
@@ -11,7 +11,7 @@
 
 <% @favorites.each do |favorite| %>
   <tr>
-    <td><%= favorite.position %></td>
+    <td><%= favorite.order %></td>
     <td><%= favorite.AppBookmark_id %></td>
     <td><%= link_to 'Show', favorite %></td>
     <td><%= link_to 'Edit', edit_favorite_path(favorite) %></td>

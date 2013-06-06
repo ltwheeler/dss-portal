@@ -5,7 +5,7 @@
 <div id="sortable">
 	<% @favorites.each do |fav| %>
 	<%== '<div class="category" id="' + fav.id.to_s + '">' %>
-	<%== fav.AppBookmark_id %>
+	<%== fav.AppBookmark_id.to_s + ', ' + fav.position.to_s %>
 	<%== '</div>' %>
 	<% end %>
 </div>

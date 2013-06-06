@@ -2,7 +2,13 @@
 
 
 <h1>Favorite Apps</h1>
-
+<div id="sortable">
+	<% @favorites.each do |fav| %>
+	<%== '<div class="category" id="' + fav.id.to_s + '">' %>
+	<%== fav.AppBookmark_id.to_s + ', ' + fav.order.to_s %>
+	<%== '</div>' %>
+	<% end %>
+</div>
 
 
 <h1>RM Apps</h1>

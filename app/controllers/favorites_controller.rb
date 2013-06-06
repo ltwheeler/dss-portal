@@ -85,9 +85,9 @@ class FavoritesController < ApplicationController
     @favorite_ids = params[:favorites]
     n = 0
     ActiveRecord::Base.transaction do
-      @category_ids.each do |id|
+      @favorite_ids.each do |id|
         favorite = Favorite.find(id)
-        favorite.order = n
+        favorite.position = n
         n += 1
         favorite.save
       end
