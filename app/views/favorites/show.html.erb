@@ -9,6 +9,10 @@
   <b>Appbookmark:</b>
   <%= @favorite.AppBookmark_id %>
 </p>
+<p>
+  <b>Loginid:</b>
+  <%= @favorite.loginid %>
+</p>
 
 <%= link_to 'Edit', edit_favorite_path(@favorite) %> |
 <%= link_to 'Back', favorites_path %>
