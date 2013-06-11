@@ -6,12 +6,17 @@
 </p>
 
 <p>
-  <b>Appbookmark:</b>
-  <%= @favorite.AppBookmark_id %>
+  <b>app_id:</b>
+  <%= @favorite.app_id %>
 </p>
 <p>
   <b>Loginid:</b>
   <%= @favorite.loginid %>
+</p>
+
+<p>
+  <b>is_bookmark:</b>
+  <%= @favorite.is_bookmark %>
 </p>
 
 <%= link_to 'Edit', edit_favorite_path(@favorite) %> |

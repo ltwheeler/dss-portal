@@ -1,6 +1,5 @@
 class Favorite < ActiveRecord::Base
-  attr_accessible :AppBookmark_id, :position, :loginid
+  attr_accessible :app_id, :position, :loginid, :is_bookmark
   validates :position, :presence => true
-  validates :AppBookmark_id, :presence => true
   #validates :loginid, :presence => true
 end

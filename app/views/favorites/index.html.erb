@@ -3,8 +3,9 @@
 <table>
   <tr>
     <th>Position</th>
-    <th>Appbookmark</th>
+    <th>App_id</th>
     <th>loginid</th>
+    <th>is_bookmark</th>
    <th> </th>
     <th></th>
     <th></th>
@@ -13,8 +14,9 @@
 <% @favorites.each do |favorite| %>
   <tr>
     <td><%= favorite.position %></td>
-    <td><%= favorite.AppBookmark_id %></td>
+    <td><%= favorite.app_id %></td>
     <td><%= favorite.loginid %> </td>
+    <td><%= favorite.is_bookmark %> </td>
     <td><%= link_to 'Show', favorite %></td>
     <td><%= link_to 'Edit', edit_favorite_path(favorite) %></td>
     <td><%= link_to 'Destroy', favorite, confirm: 'Are you sure?', method: :delete %></td>

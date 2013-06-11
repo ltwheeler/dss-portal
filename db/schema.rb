@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130606182333) do
+ActiveRecord::Schema.define(:version => 20130611083736) do
 
   create_table "app_bookmarks", :force => true do |t|
     t.string   "name"
@@ -28,10 +28,11 @@ ActiveRecord::Schema.define(:version => 20130606182333) do
 
   create_table "favorites", :force => true do |t|
     t.integer  "position"
-    t.integer  "AppBookmark_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.integer  "app_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.string   "loginid"
+    t.boolean  "is_bookmark"
   end
 
 end

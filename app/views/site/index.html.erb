@@ -5,7 +5,7 @@
 <div id="sortable">
 	<% @favorites.each do |fav| %>
   <div class="category" id="<%= fav.id %>">
-    <%= fav.AppBookmark_id %>, <%= fav.position %>
+    <%= fav.app_id %>, <%= fav.position %>
   </div>
 	<% end %>
 </div>
