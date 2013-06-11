@@ -12,8 +12,7 @@
 
 
 <h1>RM Apps</h1>
-<% p = Person.find(session[:cas_user]) %>
-<% p.accessible_applications.each do |apps| %>
+<% @current_user.accessible_applications.each do |apps| %>
   <%= apps.application_name %>
   <br />
 <% end %>
