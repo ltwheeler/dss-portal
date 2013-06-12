@@ -16,11 +16,12 @@ class ApplicationController < ActionController::Base
   end
   
 	def set_current_user
-		Authorization.current_user = session[:cas_user]
-		session[:cas_user]
+		Authorization.current_user = Person.find(session[:cas_user])
+    @current_user = Authorization.current_user
+    logger.info "#{session[:cas_user]}@#{request.remote_ip}: Set current user to #{Authorization.current_user.inspect}."
 	end
 	
-	def current_user
-		Person.new
-	end  
+  # def current_user
+  #   Authorization.current_user
+  # end  
 end
