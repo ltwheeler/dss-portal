@@ -83,6 +83,9 @@ class FavoritesController < ApplicationController
 
   def reorder
     @favorite_ids = params[:favorites]
+    @event_type = params[:eventType]
+    logger.info "HELLO HELLO HELLO"
+    logger.info @event_type
     n = 0
     ActiveRecord::Base.transaction do
       @favorite_ids.each do |id|
