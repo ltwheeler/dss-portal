@@ -1,6 +1,8 @@
-$(window).load(function() {
+$(window).load(function() 
+{
 	var oldList, newList, item, evt, itm_arr, pobj;	
-	$( "#favoritesList, #appsList" ).sortable({
+	
+	$( "#sortableFav, #sortableApp" ).sortable({
 	
 	//records the originating list, and sets starting values
 	start: function(event, ui) 
@@ -10,25 +12,41 @@ $(window).load(function() {
 		evt = "";	
 	},
 	
-	//sends event data to rails
+	//packages and sends request data to rails
         stop: function(event, ui) 
 	{          
+		itm_arr = $("#sortableFav").sortable('toArray');
+
+		//reorder:
+		//sends the event
+		//sends the ordered array of ids (itm_arr)
+		if (evt == "reorder")
+		{
+					
+		pobj = {favorites: itm_arr, eventType: evt};        
+		$.post("/favorites/reorder", pobj);
+		}
+
+		//create:
+		//sends the event	
+		//sends the ordered array of ids (itm_arr)
+		//sends the id (not used if is_rm == 0)
+		//sends a is_rm 0 or 1
+		if (evt == "create")
+		{
 		
-		// alert("Moved " + item.text() + " from " + oldList.attr('id') + " to " + newList.attr('id'));
-		//logic to build the new 'favorite' list
+		}
 
-		//itm_arr = $("#sortable").sortable('toArray');
-
-
-	
-		//alert(oldList.attr('id'));
-		//alert(ui.sender);
+		//delete
+		//sends the event
+		//sends the ordered array of ids (itm_arr)	
+		//sends the id
+		//sends a is_rm 0 or 1
+		if (evt == "delete")
+		{
 		
-		//pobj = {favorites: itm_arr, eventType: evt};        
-		//$.post("/favorites/reorder", pobj);
+		}
         },
-
-
 
 	//updates the target list during drag
         change: function(event, ui) 
@@ -57,6 +75,6 @@ $(window).load(function() {
 			evt = "delete";
 		}
         },
-      connectWith: ".connectedSortable"
-    }).disableSelection();
-  });
+	connectWith: ".connectedSortable"
+	}).disableSelection();
+});

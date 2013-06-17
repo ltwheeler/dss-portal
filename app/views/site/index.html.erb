@@ -3,9 +3,9 @@
 <h1> Favorite Apps </h1>
 
 <div id="list-A">
-    <ul id="favoritesList" class="connectedSortable">
+    <ul id="sortableFav" class="connectedSortable">
 	<% @favorites.each do |fav| %>
-  	<li class="favorite" id="<%= fav.app_id %>">
+  	<li class="favorite" id="<%= fav.id %>">
     		<%= fav.app_id %>, <%= fav.position %>
   	</li>
 	<% end %>
@@ -15,14 +15,18 @@
 <h1>Applications </h1>
 
 <div id="list-B">
-    <ul id="appsList" class="connectedSortable">
+    <ul id="sortableApp" class="connectedSortable">
 	<% @current_user.accessible_applications.each do |apps| %>
-  	<li class="favorite" id="<%= apps.application_name %>">
+  	<li class="rm" id="<%= apps.id %>">
     		<%= apps.application_name %>
   	</li>
 	<% end %>
     </ul>
 </div>
+
+<h1>testing app_list</h1>
+<%= @apps[0][:name] %>
+
 
 <h1>Test Scraps</h1>
 <% a = Person.find("guilden") %>
