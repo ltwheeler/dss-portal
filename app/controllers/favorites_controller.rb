@@ -82,8 +82,41 @@ class FavoritesController < ApplicationController
   end
 
   def reorder
-    @favorite_ids = params[:favorites]
-    @event_type = params[:eventType]
+    reorder_favorites(params[:favorites])
+    render :json => {}
+  end
+
+  def drag_create
+
+      #1) create favorite
+      @favorite = Favorite.new
+      @favorite.app_id = params[:app].chop.to_i
+      @favorite.loginid = @current_user.loginid
+      @favorite.position = 1
+	
+      if (params[:app_type] == "book")
+      	@favorite.is_bookmark = true
+      else 
+	@favorite.is_bookmark = false      
+      end
+      
+      @favorite.save
+
+      #2) correct ordering array to reflect the correct id of the new favorite (initially that field held the app_id info, not the id of the favorite
+      ordering = params[:favorites]
+      fav_index = params[:favorites].index(params[:app])
+      ordering[fav_index] = @favorite.id
+   
+     #3) trigger reorder code
+	reorder_favorites(params[:favorites])
+     #4) send new id back to client to update the id attr on the li element 
+
+    render :json => {}
+  end
+
+
+  def reorder_favorites( favorites = [] )
+    @favorite_ids = favorites
     n = 0
     ActiveRecord::Base.transaction do
       @favorite_ids.each do |id|
@@ -95,4 +128,5 @@ class FavoritesController < ApplicationController
     end
     render :json => {}
   end
+   
 end

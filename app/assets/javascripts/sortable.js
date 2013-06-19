@@ -21,30 +21,35 @@ $(window).load(function()
 		//sends the event
 		//sends the ordered array of ids (itm_arr)
 		if (evt == "reorder")
-		{
-					
-		pobj = {favorites: itm_arr, eventType: evt};        
-		$.post("/favorites/reorder", pobj);
+		{					
+			pobj = {favorites: itm_arr};        
+			$.post("/favorites/reorder", pobj);
 		}
 
 		//create:
 		//sends the event	
 		//sends the ordered array of ids (itm_arr)
-		//sends the id (not used if is_rm == 0)
-		//sends a is_rm 0 or 1
+		//sends the id 
+		//sends a is_bookmark 0 or 1
 		if (evt == "create")
 		{
-		
+			app_id = item.attr('id');
+			app_type = item.attr('class');
+			pobj = {favorites: itm_arr, app: app_id, app_type: app_type};        
+			$.post("/favorites/drag_create", pobj);
 		}
 
 		//delete
 		//sends the event
 		//sends the ordered array of ids (itm_arr)	
 		//sends the id
-		//sends a is_rm 0 or 1
+		//sends a is_bookmark 0 or 1
 		if (evt == "delete")
 		{
-		
+//			app_id = item.attr('id');
+//			app_type = item.attr('class');
+//			pobj = {favorites: itm_arr, app: app_id, app_type: app_type};        
+//			$.post("/favorites/delete", pobj);
 		}
         },
 
@@ -66,11 +71,11 @@ $(window).load(function()
 	//captures 'create favorite' and 'delete favorite' events on drop
 	receive: function(event, ui) 
 	{  
-		if(newList.attr('id') == "favoritesList")
+		if(newList.attr('id') == "sortableFav")
 		{
 			evt = "create";
 		}	
-		else if(newList.attr('id') == "appsList")
+		else if(newList.attr('id') == "sortableApp")
 		{
 			evt = "delete";
 		}

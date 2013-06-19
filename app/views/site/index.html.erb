@@ -2,7 +2,7 @@
 
 <h1> Favorite Apps </h1>
 
-<div id="list-A">
+<div id="favorites_list">
     <ul id="sortableFav" class="connectedSortable">
 	<% @favorites.each do |fav| %>
   	<li class="favorite" id="<%= fav.id %>">
@@ -14,10 +14,10 @@
 
 <h1>Applications </h1>
 
-<div id="list-B">
+<div id="apps_list">
     <ul id="sortableApp" class="connectedSortable">
 	<% @apps.each do |app| %>
-  	<li class="<%= app[:class] %>" id="<%= app[:id] %>">
+  	<li class="<%= app[:class] %>" id="<%= app[:id] %>a">
     		<%= app[:name] %>, <%= app[:class] %>, <%= app[:id] %>
   	</li>
 	<% end %>

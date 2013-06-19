@@ -9,6 +9,13 @@ resources :favorites do
   end
 end
 
+resources :favorites do
+  collection do
+    post 'drag_create'
+  end
+end
+
+
 
   root :to => 'application#welcome'
   
