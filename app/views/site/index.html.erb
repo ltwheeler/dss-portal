@@ -16,17 +16,13 @@
 
 <div id="list-B">
     <ul id="sortableApp" class="connectedSortable">
-	<% @current_user.accessible_applications.each do |apps| %>
-  	<li class="rm" id="<%= apps.id %>">
-    		<%= apps.application_name %>
+	<% @apps.each do |app| %>
+  	<li class="<%= app[:class] %>" id="<%= app[:id] %>">
+    		<%= app[:name] %>, <%= app[:class] %>, <%= app[:id] %>
   	</li>
 	<% end %>
     </ul>
 </div>
-
-<h1>testing app_list</h1>
-<%= @apps[0][:name] %>
-
 
 <h1>Test Scraps</h1>
 <% a = Person.find("guilden") %>
