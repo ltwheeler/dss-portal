@@ -45,15 +45,13 @@ $(window).load(function()
 		//sends the id
 		if (evt == "destroy")
 		{
-			alert("destroy started");
 			app_id = item.attr('id');
 			app_type = item.attr('class');
 			pobj = {favorites: itm_arr, app: app_id};  
 			//submits the request, and codes the favorite id back into the element      
 			$.post("/favorites/drag_destroy", pobj, function(data) {
 				$("#" + data.old_id).attr('id', data.app_id);
-				$("#" + data.old_id).attr('class', data.app_type);
-				alert("destroy complete");			
+				$("#" + data.old_id).addClass(data.app_type).removeClass('favorite');					
 			});
 		}
         },

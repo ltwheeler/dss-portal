@@ -22,9 +22,12 @@ def logout
 	end
 	
 	#creates a hash of all apps sorted alphabetically (display name, id, class)
+	#TODO_need to update this function to filter out apps that are favorites for the current user 
 	def app_list
 		rm_apps = @current_user.accessible_applications
+
 		bookmark_apps = AppBookmark.all		
+
 		apps = Array.new
 		app = Hash.new
 		#collect list of RM apps
