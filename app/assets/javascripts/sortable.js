@@ -18,7 +18,6 @@ $(window).load(function()
 		itm_arr = $("#sortableFav").sortable('toArray');
 
 		//reorder:
-		//sends the event
 		//sends the ordered array of ids (itm_arr)
 		if (evt == "reorder")
 		{					
@@ -26,11 +25,10 @@ $(window).load(function()
 			$.post("/favorites/reorder", pobj);
 		}
 
-		//create:
-		//sends the event	
+		//create:	
 		//sends the ordered array of ids (itm_arr)
 		//sends the id 
-		//sends a is_bookmark 0 or 1
+		//sends the app type
 		if (evt == "create")
 		{
 			app_id = item.attr('id');
@@ -42,17 +40,21 @@ $(window).load(function()
 			});
 		}
 
-		//delete
-		//sends the event
+		//destroy:
 		//sends the ordered array of ids (itm_arr)	
 		//sends the id
-		//sends a is_bookmark 0 or 1
-		if (evt == "delete")
+		if (evt == "destroy")
 		{
-//			app_id = item.attr('id');
-//			app_type = item.attr('class');
-//			pobj = {favorites: itm_arr, app: app_id, app_type: app_type};        
-//			$.post("/favorites/delete", pobj);
+			alert("destroy started");
+			app_id = item.attr('id');
+			app_type = item.attr('class');
+			pobj = {favorites: itm_arr, app: app_id};  
+			//submits the request, and codes the favorite id back into the element      
+			$.post("/favorites/drag_destroy", pobj, function(data) {
+				$("#" + data.old_id).attr('id', data.app_id);
+				$("#" + data.old_id).attr('class', data.app_type);
+				alert("destroy complete");			
+			});
 		}
         },
 
@@ -71,7 +73,7 @@ $(window).load(function()
 		}
 	},
 
-	//captures 'create favorite' and 'delete favorite' events on drop
+	//captures 'create favorite' and 'destroy favorite' events on drop
 	receive: function(event, ui) 
 	{  
 		if(newList.attr('id') == "sortableFav")
@@ -80,7 +82,7 @@ $(window).load(function()
 		}	
 		else if(newList.attr('id') == "sortableApp")
 		{
-			evt = "delete";
+			evt = "destroy";
 		}
         },
 	connectWith: ".connectedSortable"

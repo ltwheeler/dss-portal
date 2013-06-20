@@ -15,6 +15,12 @@ resources :favorites do
   end
 end
 
+resources :favorites do
+  collection do
+    post 'drag_destroy'
+  end
+end
+
 
 
   root :to => 'application#welcome'

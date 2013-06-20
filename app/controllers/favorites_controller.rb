@@ -102,7 +102,7 @@ class FavoritesController < ApplicationController
       
       @favorite.save
 
-      #2) correct ordering array to reflect the correct id of the new favorite (initially that field held the app_id info, not the id of the favorite
+      #2) update the favorite id in the position array  (initially that field held the app_id info, not the id of the favorite
       ordering = params[:favorites]
       fav_index = params[:favorites].index(params[:app])
       ordering[fav_index] = @favorite.id
@@ -111,11 +111,22 @@ class FavoritesController < ApplicationController
 	reorder_favorites(params[:favorites])
      #4) send new id back to client to update the id attr on the li element 
     render :json => {:new_id => @favorite.id, :old_id => params[:app]}
-#	respond_to do |format|
-#		format.js { render :json => @favorite.id }
-#	end
   end
 
+  def drag_destroy
+	@favorite = Favorite.find(params[:app])
+	app_id = @favorite.app_id.to_s + "a"
+	old_id = @favorite.id
+	if (@favorite.is_bookmark)
+	      	app_type = "book"
+	else 
+		app_type = "rm"     
+	end	
+    	@favorite.destroy
+	reorder_favorites(params[:favorites])
+	#send new id back to client to update the id attr on the li element 
+	render :json => {:old_id => old_id, :app_id => app_id, :app_type => app_type}
+  end
 
   def reorder_favorites( favorites = [] )
     @favorite_ids = favorites
