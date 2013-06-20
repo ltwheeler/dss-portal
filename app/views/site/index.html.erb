@@ -6,7 +6,7 @@
     <ul id="sortableFav" class="connectedSortable">
 	<% @favorites.each do |fav| %>
   	<li class="favorite" id="<%= fav.id %>">
-    		<%= fav.app_id %>, <%= fav.position %>
+    		<%= fav.id %>, <%= fav.app_id %>,  <%= fav.position %>
   	</li>
 	<% end %>
     </ul>

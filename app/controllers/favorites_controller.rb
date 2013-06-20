@@ -110,8 +110,10 @@ class FavoritesController < ApplicationController
      #3) trigger reorder code
 	reorder_favorites(params[:favorites])
      #4) send new id back to client to update the id attr on the li element 
-
-    render :json => {}
+    render :json => {:new_id => @favorite.id, :old_id => params[:app]}
+#	respond_to do |format|
+#		format.js { render :json => @favorite.id }
+#	end
   end
 
 
@@ -126,7 +128,6 @@ class FavoritesController < ApplicationController
         favorite.save
       end
     end
-    render :json => {}
   end
    
 end
