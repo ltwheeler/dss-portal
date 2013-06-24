@@ -19,5 +19,10 @@
   <%= @favorite.is_bookmark %>
 </p>
 
+<p>
+  <b>name:</b>
+  <%= @favorite.name %>
+</p>
+
 <%= link_to 'Edit', edit_favorite_path(@favorite) %> |
 <%= link_to 'Back', favorites_path %>

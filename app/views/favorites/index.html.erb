@@ -6,6 +6,7 @@
     <th>App_id</th>
     <th>loginid</th>
     <th>is_bookmark</th>
+    <ht>name</th>
    <th> </th>
     <th></th>
     <th></th>
@@ -17,6 +18,7 @@
     <td><%= favorite.app_id %></td>
     <td><%= favorite.loginid %> </td>
     <td><%= favorite.is_bookmark %> </td>
+    <td><%= favorite.name %> </td>
     <td><%= link_to 'Show', favorite %></td>
     <td><%= link_to 'Edit', edit_favorite_path(favorite) %></td>
     <td><%= link_to 'Destroy', favorite, confirm: 'Are you sure?', method: :delete %></td>
