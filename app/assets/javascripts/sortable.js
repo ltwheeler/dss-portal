@@ -3,13 +3,19 @@ $(window).load(function()
 	var oldList, newList, item, evt, itm_arr, pobj;	
 	
 	$( "#sortableFav, #sortableApp" ).sortable({
+	delay: 300,
+	distance: 15,
+	placeholder: "highlight",
+	forcePlaceholderSize: true,
 	
 	//records the originating list, and sets starting values
 	start: function(event, ui) 
 	{
 		item = ui.item;
 		newList = oldList = ui.item.parent();
-		evt = "";	
+		evt = "";
+		//ui.placeholder.html("I'm modifying the placeholder element!");
+	
 	},
 	
 	//packages and sends request data to rails
