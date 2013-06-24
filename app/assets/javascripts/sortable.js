@@ -39,7 +39,8 @@ $(window).load(function()
 		{
 			app_id = item.attr('id');
 			app_type = item.attr('class');
-			pobj = {favorites: itm_arr, app: app_id, app_type: app_type};  
+			name = item.html();
+			pobj = {favorites: itm_arr, app: app_id, app_type: app_type, name: name};  
 			//submits the request, and codes the favorite id back into the element      
 			$.post("/favorites/drag_create", pobj, function(data) {
 				$("#" + data.old_id).attr('id', data.new_id);

@@ -93,6 +93,7 @@ class FavoritesController < ApplicationController
       @favorite.app_id = params[:app].chop.to_i
       @favorite.loginid = @current_user.loginid
       @favorite.position = 1
+      @favorite.name = params[:name].to_s
 	
       if (params[:app_type] == "book")
       	@favorite.is_bookmark = true
