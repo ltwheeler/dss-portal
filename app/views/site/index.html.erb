@@ -1,21 +1,16 @@
-﻿<h1> messenger space</h1>
-	<h1> Favorite Apps </h1>
-
+<h1> Favorite Apps</h1>
 	<div id="favorites_list">
 	    <ul id="sortableFav" class="connectedSortable">
 		<% @favorites.each do |fav| %>
 	  	<li class="favorite" id="<%= fav.id %>">
-	    		<%= fav.name %>
+	    		<%= fav.id %>
 	  	</li>
 		<% end %>
 	    </ul>
 	</div>
-</div>
-
-<div class="row-fluid">
-
+<div class="clear"></div>
 	<h1>Applications </h1>
-
+<br />
 	<div id="apps_list">
 	    <ul id="sortableApp" class="connectedSortable">
 		<% @apps.each do |app| %>
@@ -25,8 +20,10 @@
 		<% end %>
 	    </ul>
 	</div>
-</div>
 
+
+
+<div class="clear"></div>
 <h1>Test Scraps</h1>
 <% a = Person.find("guilden") %>
 <%= a.name %>
@@ -35,3 +32,4 @@
 <%= @current_user %>
 <% c = session[:cas_user] %>
 <%= c %>
+

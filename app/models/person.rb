@@ -5,7 +5,7 @@ class Person < ActiveResource::Base
 	
 	def accessible_applications
 		apps = []
-		filtered_roles = roles.uniq{ |a| a.application_id }
+		filtered_roles = role_assignments.uniq{ |a| a.application_id }
 		filtered_roles.each do |roles|
 			apps << roles
 		end

@@ -14,8 +14,7 @@ $(window).load(function()
 		item = ui.item;
 		newList = oldList = ui.item.parent();
 		evt = "";
-		//ui.placeholder.html("I'm modifying the placeholder element!");
-	
+		ui.placeholder.addClass("span2");
 	},
 	
 	//packages and sends request data to rails
@@ -66,7 +65,11 @@ $(window).load(function()
 	//updates the target list during drag
         change: function(event, ui) 
 	{  
-            if(ui.sender) newList = ui.placeholder.parent();
+		if(ui.sender) 
+		{
+			newList = ui.placeholder.parent();
+			//alert(ui.placeholder.parent().html());
+		}	    
         },
 
 	//captures reorder events on drop
