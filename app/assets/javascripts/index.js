@@ -19,14 +19,21 @@ $(window).load(function()
 	
 	//packages and sends request data to rails
         stop: function(event, ui) 
-	{          
+	{       
+		if ($("#testing").data('test').app_id.length)
+		{
+			alert("true");
+		}
+//		alert($("#testing").data('test').app_id.length);
+					
 		itm_arr = $("#sortableFav").sortable('toArray');
 
 		//reorder:
 		//sends the ordered array of ids (itm_arr)
 		if (evt == "reorder")
 		{					
-			pobj = {favorites: itm_arr};        
+			pobj = {favorites: itm_arr};
+			console.log(itm_arr);        
 			$.post("/favorites/reorder", pobj);
 		}
 
@@ -95,4 +102,16 @@ $(window).load(function()
         },
 	connectWith: ".connectedSortable"
 	}).disableSelection();
+
+	
+_.templateSettings = {
+  interpolate : /\{\{(.+?)\}\}/g
+};
+var favoriteTemplate = _.template('<li class="favorite" id="{{id}}">{{ name }}</li>');
+
+for(var i = 0; i < DssPortal.favorites.length;i++)
+{
+	$('#sortableFav').append(favoriteTemplate(DssPortal.favorites[i]));	
+}
+
 });

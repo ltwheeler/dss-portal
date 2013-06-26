@@ -1,16 +1,9 @@
 <h1> Favorite Apps</h1>
 	<div id="favorites_list">
-	    <ul id="sortableFav" class="connectedSortable">
-		<% @favorites.each do |fav| %>
-	  	<li class="favorite" id="<%= fav.id %>">
-	    		<%= fav.id %>
-	  	</li>
-		<% end %>
-	    </ul>
+	    <ul id="sortableFav" class="connectedSortable" />
 	</div>
 <div class="clear"></div>
 	<h1>Applications </h1>
-<br />
 	<div id="apps_list">
 	    <ul id="sortableApp" class="connectedSortable">
 		<% @apps.each do |app| %>
@@ -20,10 +13,12 @@
 		<% end %>
 	    </ul>
 	</div>
-
-
-
 <div class="clear"></div>
+
+<h1>test2 </h1>
+
+<div id="testing" data-test='{"app_id":32423,"is_bookmark":0}'> cat </div>
+
 <h1>Test Scraps</h1>
 <% a = Person.find("guilden") %>
 <%= a.name %>
@@ -33,3 +28,17 @@
 <% c = session[:cas_user] %>
 <%= c %>
 
+<script type="text/json" id="bootstrap">
+{
+	"favorites"	: <%= @favorites.to_json %>,
+	"apps"		: <%= @apps.to_json %>
+}	
+</script>
+<script type="text/javascript">
+var div = $('<div></div>');
+div.html($('#bootstrap').text());
+var data = JSON.parse(div.text());
+
+DssPortal.favorites = data.favorites;
+DssPortal.apps = data.apps;
+</script>
